@@ -14,9 +14,12 @@ export class BCrypt {
   static async comparePasswords(password: string, hashedPassword: string): Promise<boolean> {
     try {
       const match = await bcrypt.compare(password, hashedPassword);
+      if (!match) {
+        throw new Error();
+      }
       return match;
     } catch (error) {
-      throw new CustomError(401, "incorrect password.");
+      throw new CustomError(401, "Invalid credentials");
     }
   }
 }

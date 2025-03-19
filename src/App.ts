@@ -1,4 +1,7 @@
 import express from "express";
+import "express-async-errors";
+import GlobalError from "./middlewares/GlobalError";
+import { routes } from "./routes";
 
 export class App {
   public app: express.Application;
@@ -6,6 +9,8 @@ export class App {
     this.app = express();
     this.config();
     this.app.use(express.json());
+    this.app.use("/", routes);
+    this.app.use(GlobalError.handleError);
   }
 
   private config(): void {

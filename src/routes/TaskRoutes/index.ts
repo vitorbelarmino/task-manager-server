@@ -3,4 +3,6 @@ import { TaskMiddleware } from "../../middlewares/TaskMiddleware";
 import { taskController } from "../../modules/Task/Task.controller";
 
 export const taskRoutes = Router();
-taskRoutes.post("/create", TaskMiddleware.create, taskController.create);
+taskRoutes
+  .post("/create", TaskMiddleware.create, taskController.create)
+  .get("/user/:id", TaskMiddleware.getAllByUser, taskController.getAllByUser);

@@ -23,6 +23,26 @@ class TaskService {
       },
     });
   }
+
+  async getAllByUser(userId: string) {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) {
+      throw new CustomError(404, "User not found");
+    }
+
+    const tasks = await prisma.task.findMany({
+      where: {
+        userId,
+      },
+    });
+
+    return tasks;
+  }
 }
 
 export const taskService = new TaskService();

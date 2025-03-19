@@ -13,7 +13,11 @@ export class TaskMiddleware {
       res.status(400).json({ error: error.message });
       return;
     }
+    next();
+  }
 
+  static async getAllByUser(req: Request, res: Response, next: NextFunction) {
+    await Token.validateToken(req);
     next();
   }
 }

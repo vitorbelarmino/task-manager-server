@@ -4,7 +4,7 @@ import { userService } from "./User.service";
 class UserController {
   async create(req: Request, res: Response) {
     const { body } = req;
-    await userService.createUSer(body);
+    await userService.createUser(body);
     res.status(201).end();
   }
 }

@@ -4,7 +4,7 @@ import { CustomError } from "../../Utils/CustomError";
 import { BCrypt } from "../../Utils/BCrypt";
 
 class UserService {
-  async createUSer(userData: CreateUserDTO) {
+  async createUser(userData: CreateUserDTO) {
     const { email, password } = userData;
     const userByEmail = await prisma.user.findUnique({
       where: {

@@ -1,4 +1,4 @@
-import { createUserSchema } from "../schemas/UserSchemas";
+import { createUserSchema } from "../schemas/userSchemas";
 import { Request, Response, NextFunction } from "express";
 
 export class UserMiddleware {

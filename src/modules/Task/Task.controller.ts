@@ -13,6 +13,13 @@ class TaskController {
     const tasks = await taskService.getAllByUser(id);
     res.status(200).json(tasks);
   }
+
+  async update(req: Request, res: Response) {
+    const { id } = req.params;
+    const { body } = req;
+    await taskService.update(id, body);
+    res.status(200).end();
+  }
 }
 
 export const taskController = new TaskController();

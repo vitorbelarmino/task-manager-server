@@ -1,6 +1,6 @@
 import prisma from "../../../prisma/script";
 import { CustomError } from "../../Utils/CustomError";
-import { CreateTaskDTO } from "./dto/createTaskDTO";
+import { CreateTaskDTO, UpdateTaskDTO } from "./dto/createTaskDTO";
 
 class TaskService {
   async create(taskData: CreateTaskDTO) {
@@ -42,6 +42,29 @@ class TaskService {
     });
 
     return tasks;
+  }
+
+  async update(taskId: string, taskData: UpdateTaskDTO) {
+    const task = await prisma.task.findUnique({
+      where: {
+        id: taskId,
+      },
+    });
+
+    if (!task) {
+      throw new CustomError(404, "Task not found");
+    }
+
+    await prisma.task.update({
+      where: {
+        id: taskId,
+      },
+      data: {
+        title: taskData.title,
+        description: taskData.description,
+        status: taskData.status,
+      },
+    });
   }
 }
 

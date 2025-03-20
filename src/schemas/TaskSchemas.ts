@@ -25,3 +25,9 @@ export const createTaskSchema = Joi.object({
   title: Joi.string().required().messages(messages.title),
   description: Joi.string().required().messages(messages.description),
 });
+
+export const updateTaskSchema = Joi.object({
+  title: Joi.string().required().messages(messages.title),
+  description: Joi.string().required().messages(messages.description),
+  status: Joi.string().valid("Concluído", "Pendente").required().messages(messages.status),
+});

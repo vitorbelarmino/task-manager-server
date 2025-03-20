@@ -66,6 +66,24 @@ class TaskService {
       },
     });
   }
+
+  async delete(taskId: string) {
+    const task = await prisma.task.findUnique({
+      where: {
+        id: taskId,
+      },
+    });
+
+    if (!task) {
+      throw new CustomError(404, "Task not found");
+    }
+
+    await prisma.task.delete({
+      where: {
+        id: taskId,
+      },
+    });
+  }
 }
 
 export const taskService = new TaskService();

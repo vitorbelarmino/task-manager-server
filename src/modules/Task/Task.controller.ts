@@ -20,6 +20,12 @@ class TaskController {
     await taskService.update(id, body);
     res.status(200).end();
   }
+
+  async delete(req: Request, res: Response) {
+    const { id } = req.params;
+    await taskService.delete(id);
+    res.status(200).end();
+  }
 }
 
 export const taskController = new TaskController();

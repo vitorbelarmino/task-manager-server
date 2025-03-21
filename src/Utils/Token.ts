@@ -3,12 +3,14 @@ import { CustomError } from "./CustomError";
 import { Request } from "express";
 
 interface IUser {
+  id: string;
   email: string;
 }
 
 export class Token {
   static async createToken(user: IUser) {
     const payload = {
+      id: user.id,
       email: user.email,
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET || "mysecretkey", {

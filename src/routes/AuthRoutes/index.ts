@@ -3,5 +3,7 @@ import { AuthMiddleware } from "../../middlewares/AuthMiddleware";
 import { authController } from "../../modules/Auth/Auth.controller";
 
 const authRoutes = Router();
-authRoutes.post("/login", AuthMiddleware.login, authController.login);
+authRoutes
+  .post("/login", AuthMiddleware.login, authController.login)
+  .get("/claim", authController.claimUser);
 export { authRoutes };

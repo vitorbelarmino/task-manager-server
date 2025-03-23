@@ -14,7 +14,7 @@ class TaskService {
       throw new CustomError(404, "User not found");
     }
 
-    await prisma.task.create({
+    const newTask = await prisma.task.create({
       data: {
         userId: taskData.userId,
         title: taskData.title,
@@ -22,6 +22,7 @@ class TaskService {
         status: "Pendente",
       },
     });
+    return newTask;
   }
 
   async getAllByUser(userId: string) {

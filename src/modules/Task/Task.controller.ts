@@ -4,8 +4,8 @@ import { taskService } from "./Task.service";
 class TaskController {
   async create(req: Request, res: Response) {
     const { body } = req;
-    await taskService.create(body);
-    res.status(201).end();
+    const newTask = await taskService.create(body);
+    res.status(201).json(newTask);
   }
 
   async getAllByUser(req: Request, res: Response) {

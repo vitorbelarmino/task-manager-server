@@ -19,10 +19,14 @@ export class Token {
     });
     return token;
   }
-  static async verifyToken(token: string) {
+  static async verifyToken(token: string): Promise<string> {
     try {
-      const user = jwt.verify(token, process.env.JWT_SECRET || "senha");
-      return user;
+      const decoded = jwt.verify(token, process.env.JWT_SECRET || "senha");
+      if (typeof decoded === "string") {
+        throw new CustomError(401, "Invalid token");
+      }
+
+      return decoded.id;
     } catch (error) {
       if (error instanceof TokenExpiredError) {
         throw new CustomError(401, error.message);

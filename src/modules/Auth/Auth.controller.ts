@@ -10,8 +10,9 @@ class AuthController {
   }
 
   async claimUser(req: Request, res: Response) {
-    const user = await Token.validateToken(req);
-    res.status(200).json(user);
+    const userId = await Token.validateToken(req);
+    await authService.claimUser(userId);
+    res.status(200).json({ userId });
   }
 }
 

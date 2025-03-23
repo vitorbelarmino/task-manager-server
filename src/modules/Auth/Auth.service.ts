@@ -24,6 +24,18 @@ class AuthService {
 
     return token;
   }
+
+  async claimUser(userId: string) {
+    const getUser = await prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!getUser) {
+      throw new CustomError(404, "User not found");
+    }
+  }
 }
 
 export const authService = new AuthService();

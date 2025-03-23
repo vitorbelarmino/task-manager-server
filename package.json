@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch \"./src/**\" ./src/server.ts",
     "db:up": "docker-compose up --build -d",
-    "db:down": "docker-compose stop"
+    "db:down": "docker-compose stop",
+    "postinstall": "prisma generate"
   },
   "author": "vitorbelarmino",
   "license": "ISC",

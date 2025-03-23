@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from "express";
-import { loginSchema } from "../schemas/AuthSchemas";
+import { authSchema } from "../schemas/AuthSchemas";
 
 export class AuthMiddleware {
-  static async login(req: Request, res: Response, next: NextFunction) {
+  static async authValidation(req: Request, res: Response, next: NextFunction) {
     const { body } = req;
-    const { error } = loginSchema.validate(body);
+    const { error } = authSchema.validate(body);
     if (error) {
       res.status(400).json({ message: error.message });
       return;

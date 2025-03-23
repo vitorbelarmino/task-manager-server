@@ -13,7 +13,7 @@ const messages = {
   },
 };
 
-export const loginSchema = Joi.object({
+export const authSchema = Joi.object({
   email: Joi.string().email().required().messages(messages.email),
   password: Joi.string().min(4).required().messages(messages.password),
 });

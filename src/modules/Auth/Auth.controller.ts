@@ -9,6 +9,12 @@ class AuthController {
     res.status(200).json({ token });
   }
 
+  async register(req: Request, res: Response) {
+    const { body } = req;
+    const token = await authService.register(body);
+    res.status(201).json({ token });
+  }
+
   async claimUser(req: Request, res: Response) {
     const userId = await Token.validateToken(req);
     await authService.claimUser(userId);

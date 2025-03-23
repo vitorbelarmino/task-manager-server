@@ -4,6 +4,7 @@ import { authController } from "../../modules/Auth/Auth.controller";
 
 const authRoutes = Router();
 authRoutes
-  .post("/login", AuthMiddleware.login, authController.login)
+  .post("/login", AuthMiddleware.authValidation, authController.login)
+  .post("/register", AuthMiddleware.authValidation, authController.register)
   .get("/claim", authController.claimUser);
 export { authRoutes };

@@ -5,8 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch \"./src/**\" ./src/server.ts",
-    "db:up": "docker-compose up --build -d",
-    "db:down": "docker-compose stop",
+    "app:up": "docker-compose up --build -d",  
+    "app:down": "docker-compose down",  
+    "db:up": "docker-compose -f docker-compose.db.yml up -d",  
+    "db:down": "docker-compose -f docker-compose.db.yml down",
+    "docker:migrate": "docker-compose exec app npx prisma migrate dev",
     "postinstall": "prisma generate"
   },
   "author": "vitorbelarmino",

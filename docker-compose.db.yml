@@ -1,19 +1,6 @@
+version: "3.8"
 
 services:
-  app:
-    container_name: Task_manager
-    build: .
-    ports:
-      - "3333:3333"
-    env_file:
-      - .env
-    depends_on:
-      - db
-    volumes:
-      - .:/usr/src/app
-    networks:
-      - mynetwork
-
   db:
     container_name: db
     image: postgres
@@ -23,6 +10,7 @@ services:
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
+
     volumes:
       - db_data:/var/lib/postgresql/data
     networks:

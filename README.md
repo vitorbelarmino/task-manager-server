@@ -35,14 +35,6 @@ O **Task Manager Server** é um aplicativo **Full Stack** desenvolvido em **Type
 
 O projeto segue uma arquitetura limpa e bem definida, com as camadas de **rotas**, **controladores** e **modelos** separadas. A configuração do banco de dados é simplificada utilizando o **Prisma**, enquanto a containerização com **Docker** facilita a configuração e execução da aplicação.
 
-### Como Rodar o Projeto Localmente
-
-1. **Clone o repositório**:
-   ```bash
-   git clone https://github.com/vitorbelarmino/task-manager-server.git
-   cd task-manager-server
-
-
 ## ⬇️ Como executar o projeto
 
 ### Rodando localmente
